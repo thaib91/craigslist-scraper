@@ -39,7 +39,7 @@ const scrapeCraigslist = async () => {
 
       const title = resultTitle.text();
       const url = resultTitle.attr("href"); //similar to jquery.
-      const scrapeResult = {title, url};
+      const scrapeResult = {title, url}; //puts the results into an object for easier acesss.
       scrapeResults.push(scrapeResult)
     });
     console.log(scrapeResults)
