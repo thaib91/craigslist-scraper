@@ -14,7 +14,7 @@ const cheerio = require("cheerio"); //select different elements - similar to jqu
 //use the developer tool to see what you're trying to find in regards to CSS
 // const rq = require('request');
 
-const scrapeResult = {
+const scrapeSample = {
   title: "Cozy home perfectly suited for you!",
   description: "info about the apartment",
   datePosted: new Date("2019-03-12"),
@@ -26,6 +26,7 @@ const scrapeResult = {
 };
 
 const url = "https://denver.craigslist.org/d/apts-housing-for-rent/search/apa";
+const scrapeResults = [];
 
 const scrapeCraigslist = async () => {
   //function to take in html data (into string) of webpage into terminal
@@ -34,12 +35,14 @@ const scrapeCraigslist = async () => {
     const $ = await cheerio.load(htmlResult);
 
     $(".result-info").each((index, element) => {
-      console.log(
-        $(element)
-          .children(".result-title")
-          .text()
-      );
+      const resultTitle = $(element).children(".result-title");
+
+      const title = resultTitle.text();
+      const url = resultTitle.attr("href"); //similar to jquery.
+      const scrapeResult = {title, url};
+      scrapeResults.push(scrapeResult)
     });
+    console.log(scrapeResults)
   } catch (err) {
     console.error(err);
   }
