@@ -39,10 +39,11 @@ const scrapeCraigslist = async () => {
 
       const title = resultTitle.text();
       const url = resultTitle.attr("href"); //similar to jquery.
-      const scrapeResult = {title, url}; //puts the results into an object for easier acesss.
+      const datePosted = new Date($(element).children("time").attr("datetime"));
+      const scrapeResult = {title, url, datePosted}; //puts the results into an object for easier acesss.
       scrapeResults.push(scrapeResult)
     });
-    console.log(scrapeResults)
+    console.log(scrapeResults) 
   } catch (err) {
     console.error(err);
   }
