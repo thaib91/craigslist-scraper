@@ -36,11 +36,13 @@ const scrapeCraigslist = async () => {
 
     $(".result-info").each((index, element) => {
       const resultTitle = $(element).children(".result-title");
-
+      const resultHood = $(element).children(".result-meta").children(".result-hood")
+      
+      const hood = resultHood.text();
       const title = resultTitle.text();
       const url = resultTitle.attr("href"); //similar to jquery.
       const datePosted = new Date($(element).children("time").attr("datetime"));
-      const scrapeResult = {title, url, datePosted}; //puts the results into an object for easier acesss.
+      const scrapeResult = {title, url, datePosted, hood}; //puts the results into an object for easier acesss.
       scrapeResults.push(scrapeResult)
     });
     console.log(scrapeResults) 
