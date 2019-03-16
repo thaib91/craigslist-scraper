@@ -36,7 +36,7 @@ const scrapeCraigslist = async () => {
 
     $(".result-info").each((index, element) => {
       const resultTitle = $(element).children(".result-title");
-      const resultHood = $(element).children(".result-meta").children(".result-hood")
+      const resultHood = $(element).children(".result-meta").children(".result-hood");
       
       const hood = resultHood.text();
       const title = resultTitle.text();
