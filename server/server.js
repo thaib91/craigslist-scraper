@@ -78,6 +78,17 @@ scrapeCraigslist();
     //     return Array.from(repos).map((repo)=>{return repo.href});
     // });
 
+    //puppeteer can generate a pdf
+    // await page.pdf({
+    //     path: filename,
+    //     format: 'Letter';
+    //     margin: {
+    //         top: "1in",
+    //         bottom: "1in,
+    //     }
+
+    })
+
     await browser.close();//close browser after the scrape has been completed //memory leak may occur if not closed.
 })()
 // app.listen(SERVER_PORT, () => console.log(`IT'S OVER ${SERVER_PORT}`));
