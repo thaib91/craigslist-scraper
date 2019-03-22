@@ -9,6 +9,7 @@ const { SERVER_PORT } = process.env;
 
 //web scraping
 const request = require("request-promise"); //download web pages
+const puppeteer = require("puppeteer");
 
 const cheerio = require("cheerio"); //select different elements - similar to jquery (select by css selector)
 //use the developer tool to see what you're trying to find in regards to CSS
@@ -53,4 +54,13 @@ const scrapeCraigslist = async () => {
 
 scrapeCraigslist();
 
+
+(async () => {
+    const browser = await puppeteer.launch({headless:false}); //used as an option to show GUI in Chromium instance
+    const page = await browser.newPage();
+    await page.setViewport({width: 1280, height: 800});
+    await page.goto('https://thaibui.run'); //which page to scrape
+
+    await browser.close();//close browser after the scrape has been completed
+})()
 // app.listen(SERVER_PORT, () => console.log(`IT'S OVER ${SERVER_PORT}`));
