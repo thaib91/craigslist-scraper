@@ -74,7 +74,7 @@ scrapeCraigslist();
     //then using vanilla javascript use
     // var repoLinks = '#user-repositories-list li h3 a';
     // var tmp = await page.evaluate(()=>{
-    //     var repos = document.querySelectorAll(repoLinks);
+    //     var repos = document.querySelectorAll(repoLinks); //this returns a node collection
     //     return Array.from(repos).map((repo)=>{return repo.href});
     // });
 
