@@ -61,6 +61,8 @@ scrapeCraigslist();
     await page.setViewport({width: 1280, height: 800});
     await page.goto('https://thaibui.run'); //which page to scrape
 
-    await browser.close();//close browser after the scrape has been completed
+    // await page.screenshot({path: 'filename.png', fullPage: true}) this is used to take page screen shots
+
+    await browser.close();//close browser after the scrape has been completed //memory leak may occur if not closed.
 })()
 // app.listen(SERVER_PORT, () => console.log(`IT'S OVER ${SERVER_PORT}`));
