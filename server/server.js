@@ -69,6 +69,15 @@ scrapeCraigslist();
     // await page.goto('https://thaibui.run', {waitUntil: 'networkidle2'});
     // var html = await page.content 
 
+    //you can get by selector using 
+    // await page.waitForSelector('whatever the selector is')
+    //then using vanilla javascript use
+    // var repoLinks = '#user-repositories-list li h3 a';
+    // var tmp = await page.evaluate(()=>{
+    //     var repos = document.querySelectorAll(repoLinks);
+    //     return Array.from(repos).map((repo)=>{return repo.href});
+    // });
+
     await browser.close();//close browser after the scrape has been completed //memory leak may occur if not closed.
 })()
 // app.listen(SERVER_PORT, () => console.log(`IT'S OVER ${SERVER_PORT}`));
