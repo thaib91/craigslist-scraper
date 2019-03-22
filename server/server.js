@@ -63,6 +63,12 @@ scrapeCraigslist();
 
     // await page.screenshot({path: 'filename.png', fullPage: true}) this is used to take page screen shots
 
+    //This is to get the page source code.
+    // const browser = await puppeteer.launch();
+    // const page = await browser.newPage();
+    // await page.goto('https://thaibui.run', {waitUntil: 'networkidle2'});
+    // var html = await page.content 
+
     await browser.close();//close browser after the scrape has been completed //memory leak may occur if not closed.
 })()
 // app.listen(SERVER_PORT, () => console.log(`IT'S OVER ${SERVER_PORT}`));
