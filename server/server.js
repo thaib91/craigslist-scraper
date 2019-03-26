@@ -89,7 +89,7 @@ scrapeCraigslist();
 
     //figure out why puppeteer is different than Cheerio? WHat is hte best practice?
 
-    })
+    // })
 
     await browser.close();//close browser after the scrape has been completed //memory leak may occur if not closed.
 })()
