@@ -15,18 +15,23 @@ const cheerio = require("cheerio"); //select different elements - similar to jqu
 //use the developer tool to see what you're trying to find in regards to CSS
 // const rq = require('request');
 
-const scrapeSample = {
-  title: "Cozy home perfectly suited for you!",
-  description: "info about the apartment",
-  datePosted: new Date("2019-03-12"),
-  url:
-    "https://denver.craigslist.org/apa/d/englewood-cozy-home-perfectly-suited/6833612198.html",
-  hood: "(Denver Tech Center / Centennial)",
-  address: "10200 E Dry Creek Rd",
-  cost: "$1647/month"
-};
+//***************** Scrape Sample for Craigslist*****************/
+// const scrapeSample = {
+//   title: "Cozy home perfectly suited for you!",
+//   description: "info about the apartment",
+//   datePosted: new Date("2019-03-12"),
+//   url:
+//     "https://denver.craigslist.org/apa/d/englewood-cozy-home-perfectly-suited/6833612198.html",
+//   hood: "(Denver Tech Center / Centennial)",
+//   address: "10200 E Dry Creek Rd",
+//   cost: "$1647/month"
+// }; 
 
-const url = "https://denver.craigslist.org/d/apts-housing-for-rent/search/apa";
+//***************** Scrape Sample for IABC*****************/
+
+
+
+const url = "https://toronto.iabc.com/about/pic/pic-member-list/";
 const scrapeResults = [];
 
 const scrapeCraigslist = async () => {
@@ -55,11 +60,11 @@ const scrapeCraigslist = async () => {
 scrapeCraigslist();
 
 
-(async () => {
-    const browser = await puppeteer.launch({headless:false}); //used as an option to show GUI in Chromium instance
-    const page = await browser.newPage();
-    await page.setViewport({width: 1280, height: 800});
-    await page.goto('https://thaibui.run'); //which page to scrape
+// (async () => {
+//     const browser = await puppeteer.launch({headless:false}); //used as an option to show GUI in Chromium instance
+//     const page = await browser.newPage();
+//     await page.setViewport({width: 1280, height: 800});
+//     await page.goto('https://thaibui.run'); which page to scrape
 
     // await page.screenshot({path: 'filename.png', fullPage: true}) this is used to take page screen shots
 
@@ -91,51 +96,51 @@ scrapeCraigslist();
 
     // })
 
-    await browser.close();//close browser after the scrape has been completed //memory leak may occur if not closed.
-})()
+    // await browser.close(); close browser after the scrape has been completed //memory leak may occur if not closed.
+// })()
 // app.listen(SERVER_PORT, () => console.log(`IT'S OVER ${SERVER_PORT}`));
 
 //Twitter Scraper:
 
-const tscraper = function (twitterUsername) {
+// const tscraper = function (twitterUsername) {
 
-  const twitterUrl = 'https://twitter.com/' + twitterUsername;
+//   const twitterUrl = 'https://twitter.com/' + twitterUsername;
 
-  request(twitterUrl, function(error, response, html) {
+//   request(twitterUrl, function(error, response, html) {
 
-    if (!error) {
-      const $ = cheerio.load(html);
-      const $wrapper = $('.ProfileHeaderCard');
-      const $new = $('.ProfileNav');
-      let name, username, bio, location, webpage, join_date, following, tweets, followers, likes;
+//     if (!error) {
+//       const $ = cheerio.load(html);
+//       const $wrapper = $('.ProfileHeaderCard');
+//       const $new = $('.ProfileNav');
+//       let name, username, bio, location, webpage, join_date, following, tweets, followers, likes;
 
-      name        = $wrapper.find('.ProfileHeaderCard-name a').first().text();
-      username    = $wrapper.find('.ProfileHeaderCard-screenname > a').first().text();
-      bio         = $wrapper.find('.ProfileHeaderCard-bio').first().text();
-      join_date   = $wrapper.find('.ProfileHeaderCard-joinDate .ProfileHeaderCard-joinDateText').first().text().replace('Joined','').substring(1);
-      tweets      = $new.find('.ProfileNav-item--tweets .ProfileNav-value').first().text();
-      following   = $new.find('.ProfileNav-item--following .ProfileNav-value').first().text();
-      followers   = $new.find('.ProfileNav-item--followers .ProfileNav-value').first().text();
-      likes       = $new.find('.ProfileNav-item--favorites .ProfileNav-value').first().text();
+//       name        = $wrapper.find('.ProfileHeaderCard-name a').first().text();
+//       username    = $wrapper.find('.ProfileHeaderCard-screenname > a').first().text();
+//       bio         = $wrapper.find('.ProfileHeaderCard-bio').first().text();
+//       join_date   = $wrapper.find('.ProfileHeaderCard-joinDate .ProfileHeaderCard-joinDateText').first().text().replace('Joined','').substring(1);
+//       tweets      = $new.find('.ProfileNav-item--tweets .ProfileNav-value').first().text();
+//       following   = $new.find('.ProfileNav-item--following .ProfileNav-value').first().text();
+//       followers   = $new.find('.ProfileNav-item--followers .ProfileNav-value').first().text();
+//       likes       = $new.find('.ProfileNav-item--favorites .ProfileNav-value').first().text();
 
-      const userData = {
-        name: name,
-        username: username,
-        bio: bio,
-        join_date: join_date,
-        tweets:tweets,
-        following: following,
-        followers:followers,
-        likes:likes
-      };
+//       const userData = {
+//         name: name,
+//         username: username,
+//         bio: bio,
+//         join_date: join_date,
+//         tweets:tweets,
+//         following: following,
+//         followers:followers,
+//         likes:likes
+//       };
 
-      console.log(userData);
-    }
-  });
-}
+//       console.log(userData);
+//     }
+//   });
+// }
 
-tscraper(process.argv[2]);
+// tscraper(process.argv[2]);
 
-module.exports = {
-  tscraper
-}
+// module.exports = {
+//   tscraper
+// }
