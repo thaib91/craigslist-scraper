@@ -50,15 +50,17 @@ const scrapeCraigslist = async () => {
 
     $(".su-column-innter su-clearfix").each((index, element) => {
       console.log(element)
-      const resultName = $(element).children(".result-title");
-      const resultHood = $(element).children(".result-meta").children(".result-hood");
+      const resultName = $(element).children("a");
+      console.log(resultName)
+      // const resultHood = $(element).children(".result-meta").children(".result-hood");
       
-      const hood = resultHood.text();
-      const title = resultTitle.text();
-      const url = resultTitle.attr("href"); //similar to jquery.
-      const datePosted = new Date($(element).children("time").attr("datetime"));
-      const scrapeResult = {title, url, datePosted, hood}; //puts the results into an object for easier acesss.
-      scrapeResults.push(scrapeResult)
+      // const hood = resultHood.text();
+      // const title = resultTitle.text();
+      // const url = resultTitle.attr("href"); similar to jquery.
+      // const datePosted = new Date($(element).children("time").attr("datetime"));
+      // const scrapeResult = {title, url, datePosted, hood}; 
+              //puts the results into an object for easier acesss.
+      // scrapeResults.push(scrapeResult)
     });
     console.log(scrapeResults) 
   } catch (err) {
