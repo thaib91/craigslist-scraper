@@ -29,6 +29,14 @@ const cheerio = require("cheerio"); //select different elements - similar to jqu
 
 //***************** Scrape Sample for IABC*****************/
 
+const scrapeSample = {
+  name: 'John Doe',
+  company: 'XYZ Company',
+  address: '123 st',
+  phone: '212-262-5655',
+  site: 'www.site.com',
+  twitter: '@twitterhandle'
+}
 
 
 const url = "https://toronto.iabc.com/about/pic/pic-member-list/";
@@ -40,8 +48,9 @@ const scrapeCraigslist = async () => {
     const htmlResult = await request.get(url); //like an axios call but getting data from a URL
     const $ = await cheerio.load(htmlResult);
 
-    $(".result-info").each((index, element) => {
-      const resultTitle = $(element).children(".result-title");
+    $(".su-column-innter su-clearfix").each((index, element) => {
+      console.log(element)
+      const resultName = $(element).children(".result-title");
       const resultHood = $(element).children(".result-meta").children(".result-hood");
       
       const hood = resultHood.text();
