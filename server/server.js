@@ -42,7 +42,7 @@ const scrapeSample = {
 const url = "https://toronto.iabc.com/about/pic/pic-member-list/";
 const scrapeResults = [];
 
-const scrapeCraigslist = async () => {
+const scrapeSite = async () => {
   //function to take in html data (into string) of webpage into terminal
   try {
     const htmlResult = await request.get(url); //like an axios call but getting data from a URL
@@ -50,7 +50,7 @@ const scrapeCraigslist = async () => {
 
     $(".su-column-innter su-clearfix").each((index, element) => {
       console.log(element)
-      const resultName = $(element).children("a");
+      const resultName = $(element).children(".su-row");
       console.log(resultName)
       // const resultHood = $(element).children(".result-meta").children(".result-hood");
       
@@ -68,7 +68,7 @@ const scrapeCraigslist = async () => {
   }
 };
 
-scrapeCraigslist();
+scrapeSite();
 
 
 // (async () => {
